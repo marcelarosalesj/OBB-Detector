@@ -12,12 +12,12 @@ def draw_bounding_polygon_with_label(frame, box, label, track_id, color):
     """
     # Draw bounding polygon
     cv2.polylines(frame, [np.array(box, np.int32).reshape((-1, 1, 2))], isClosed=True, color=color, thickness=2)
-    
+
     # Prepare text
     label_text = f"{label} ID:{track_id}"
     # Calculate width and height of the text box
     (text_width, text_height), _ = cv2.getTextSize(label_text, cv2.FONT_HERSHEY_SIMPLEX, 0.9, 2)
-    
+
     # Draw a filled rectangle to put the class label
     cv2.rectangle(frame, (box[0][0], box[0][1] - 30), (box[0][0] + text_width, box[0][1]), color, cv2.FILLED)
     # Draw class label text
